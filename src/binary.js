@@ -15,6 +15,12 @@ const command = meow(`
     --verbose, -v   Generate verbose output messages.
     --quiet, -q     Reduce amount of output messages to warnings and errors.
 
+  Commands:
+    dev             Start development server
+    build           Build production appliction
+    build:server    Build server part of production appliction
+    clean           Clean up all generated files
+
 `, {
     alias: {
       v: "verbose",
@@ -33,6 +39,7 @@ console.log(chalk.bold("EDGE " + chalk.green("v" + pkg.version)))
 const availableTasks = [
   { task: "clean", commands: [ cleanClient, cleanServer ] },
   { task: "build", commands: [ cleanClient, cleanServer, buildClient, buildServer ] },
+  { task: "build:server", commands: [ cleanServer, buildServer ] },
   { task: "dev", commands: [ cleanClient, cleanServer, startDevServer ] }
 ]
 
