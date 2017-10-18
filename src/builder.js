@@ -153,7 +153,6 @@ export default function builder(target, env = "development", config = {}) {
   }
 
   const CACHE_LOADER_DIRECTORY = resolve(ROOT, `.cache/loader-${CACHE_HASH}-${target}-${env}`)
-  const UFLIFY_CACHE_DIRECTORY = resolve(ROOT, `.cache/uglify-${CACHE_HASH}-${target}-${env}`)
 
   const cacheLoader = config.build.useCacheLoader ? {
     loader: "cache-loader",
@@ -386,7 +385,7 @@ export default function builder(target, env = "development", config = {}) {
         new UglifyPlugin({
           sourceMap: config.build.enableSourceMaps,
           parallel: {
-            cache: UFLIFY_CACHE_DIRECTORY
+            cache: true
           },
           uglifyOptions: UGLIFY_OPTIONS
         }) : null,
