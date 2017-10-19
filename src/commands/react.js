@@ -18,8 +18,8 @@ export function startReactServer(buildConfig = {}) {
         clientStats
       })
     ],
-    enableCSP: process.env.ENABLE_CSP !== "false",
-    enableNonce: process.env.ENABLE_NONCE !== "false"
+    enableCSP: process.env.ENABLE_CSP === "true",
+    enableNonce: process.env.ENABLE_NONCE === "true"
   })
 
   server.listen(process.env.SERVER_PORT, () => {
